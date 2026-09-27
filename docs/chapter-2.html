@@ -15,7 +15,7 @@
 <meta name="twitter:title" content="The 67/68 Problem — free chapter · Trust Issues">
 <meta name="twitter:description" content="Two days lost to one successful request out of 68 — and the loop that makes that misery optional.">
 <meta name="twitter:image" content="https://ayaan278.github.io/trust-issues-toolkit/img/ch2-opener.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0c0b'/%3E%3Ctext x='16' y='21' font-family='ui-monospace,monospace' font-size='11' font-weight='700' fill='%233dff7a' text-anchor='middle'%3ETI%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0c0b'/%3E%3Ctext x='16' y='21' font-family='ui-monospace,monospace' font-size='11' font-weight='700' fill='%238B6FD4' text-anchor='middle'%3ETI%3C/text%3E%3C/svg%3E">
 <style>
 :root{
   --bg:#0a0c0b;
@@ -26,9 +26,10 @@
   --ink:#eef2ef;
   --muted:#9aa89f;
   --faint:#6b7a70;
-  --accent:#3dff7a;
-  --accent-dim:rgba(61,255,122,.14);
-  --accent-ink:#04140a;
+  --accent:#8B6FD4;
+  --accent-light:#B8A6F0;
+  --accent-dim:rgba(139,111,212,.14);
+  --accent-ink:#0a0c0b;
   --fail:#ff5c6a;
   --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
@@ -46,14 +47,14 @@ body{
   font-size:1.08rem;
   line-height:1.7;
   background-image:
-    radial-gradient(1000px 500px at 80% -5%, rgba(61,255,122,.06), transparent 55%),
+    radial-gradient(1000px 500px at 80% -5%, rgba(139,111,212,.06), transparent 55%),
     linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
   background-size:auto,56px 56px,56px 56px;
   background-attachment:fixed;
 }
-a{color:var(--accent);text-underline-offset:3px}
-a:hover{color:#7bff9f}
+a{color:var(--accent-light);text-underline-offset:3px}
+a:hover{color:#D4C8F7}
 a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 img{max-width:100%;height:auto;display:block}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
@@ -69,20 +70,20 @@ img{max-width:100%;height:auto;display:block}
   max-width:68rem;
 }
 .brand{color:var(--ink);text-decoration:none;font-weight:600;letter-spacing:-.02em}
-.brand span{color:var(--accent)}
+.brand span{color:var(--accent-light)}
 .top nav{display:flex;flex-wrap:wrap;gap:.15rem .9rem}
 .top nav a{color:var(--muted);text-decoration:none}
-.top nav a:hover{color:var(--accent)}
+.top nav a:hover{color:var(--accent-light)}
 .label{
   font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--accent);margin:0 0 .75rem;
+  text-transform:uppercase;color:var(--accent-light);margin:0 0 .75rem;
 }
 h1,h2,h3{line-height:1.15;letter-spacing:-.03em;font-weight:750;margin:0}
 h1{font-size:clamp(2.2rem,5.5vw,3.2rem);margin:.15rem 0 1.1rem}
 h2{font-size:clamp(1.35rem,2.5vw,1.7rem);margin:2.4rem 0 .9rem}
 code,pre{font-family:var(--mono)}
 :not(pre)>code{
-  background:var(--bg-soft);color:var(--accent);
+  background:var(--bg-soft);color:var(--accent-light);
   border:1px solid var(--line);padding:.08em .35em;border-radius:5px;font-size:.86em;
 }
 .btn{
@@ -92,9 +93,9 @@ code,pre{font-family:var(--mono)}
   padding:.72rem 1.15rem;margin:.25rem .55rem .25rem 0;
   color:var(--ink);background:transparent;transition:background .15s,border-color .15s,color .15s,transform .15s;
 }
-.btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.btn:hover{border-color:var(--accent-light);color:var(--accent-light);transform:translateY(-1px)}
 .btn.solid{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.btn.solid:hover{background:#7bff9f;border-color:#7bff9f;color:var(--accent-ink)}
+.btn.solid:hover{background:#A892E8;border-color:#A892E8;color:var(--accent-ink)}
 .btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 .note{
@@ -126,7 +127,7 @@ figure img{
 }
 figure::after{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(135deg, rgba(61,255,122,.16), transparent 42%);
+  background:linear-gradient(135deg, rgba(139,111,212,.16), transparent 42%);
   mix-blend-mode:screen;
 }
 
@@ -143,7 +144,7 @@ pre{
 .end .box{
   background:var(--bg-elev);border:1px solid var(--line);border-radius:16px;
   padding:1.35rem 1.3rem 1.15rem;
-  background-image:linear-gradient(135deg, rgba(61,255,122,.08), transparent 45%);
+  background-image:linear-gradient(135deg, rgba(139,111,212,.08), transparent 45%);
 }
 .end p{color:var(--muted);margin:0 0 .9rem}
 .end .small{font-size:.88rem;margin-top:1rem}
