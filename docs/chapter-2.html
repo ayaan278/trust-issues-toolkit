@@ -6,56 +6,178 @@
 <title>The 67/68 Problem — free chapter · Trust Issues</title>
 <meta name="description" content="Free sample chapter from Trust Issues: Working With Code You Didn’t Write. Two days lost to one successful request out of 68 — and the loop that makes that misery optional.">
 <meta name="referrer" content="no-referrer">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23fff' text-anchor='middle'%3ETI%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The 67/68 Problem — free chapter · Trust Issues">
+<meta property="og:description" content="Two days lost to one successful request out of 68 — and the loop that makes that misery optional.">
+<meta property="og:url" content="https://ayaan278.github.io/trust-issues-toolkit/chapter-2.html">
+<meta property="og:image" content="https://ayaan278.github.io/trust-issues-toolkit/img/ch2-opener.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The 67/68 Problem — free chapter · Trust Issues">
+<meta name="twitter:description" content="Two days lost to one successful request out of 68 — and the loop that makes that misery optional.">
+<meta name="twitter:image" content="https://ayaan278.github.io/trust-issues-toolkit/img/ch2-opener.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0c0b'/%3E%3Ctext x='16' y='21' font-family='ui-monospace,monospace' font-size='11' font-weight='700' fill='%233dff7a' text-anchor='middle'%3ETI%3C/text%3E%3C/svg%3E">
 <style>
-:root{--ink:#000;--paper:#fff;--muted:#4a4a4a;--soft:#f3f3f3;
---sans:"DejaVu Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
---serif:"DejaVu Serif",Georgia,"Times New Roman",serif;
---mono:"DejaVu Sans Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+:root{
+  --bg:#0a0c0b;
+  --bg-elev:#111513;
+  --bg-soft:#161a18;
+  --line:#243028;
+  --line-strong:#314038;
+  --ink:#eef2ef;
+  --muted:#9aa89f;
+  --faint:#6b7a70;
+  --accent:#3dff7a;
+  --accent-dim:rgba(61,255,122,.14);
+  --accent-ink:#04140a;
+  --fail:#ff5c6a;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  --radius:12px;
+  --max:46rem;
+  --shadow:0 18px 50px rgba(0,0,0,.35);
+}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.0625rem;line-height:1.65}
-a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}
-a:hover{text-decoration-thickness:2px}
-a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:1.08rem;
+  line-height:1.7;
+  background-image:
+    radial-gradient(1000px 500px at 80% -5%, rgba(61,255,122,.06), transparent 55%),
+    linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+  background-size:auto,56px 56px,56px 56px;
+  background-attachment:fixed;
+}
+a{color:var(--accent);text-underline-offset:3px}
+a:hover{color:#7bff9f}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 img{max-width:100%;height:auto;display:block}
-.wrap{max-width:46rem;margin:0 auto;padding:0 1.25rem}
-.top{border-bottom:1px solid var(--ink)}
-.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:.9rem;padding-bottom:.9rem;font-family:var(--mono);font-size:.8rem}
-.top a{text-decoration:none;white-space:nowrap}
-.top nav a{margin-left:1.1rem}
-.top nav a:hover,.top .brand:hover{text-decoration:underline}
-.label{font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin:0 0 .6rem}
-h1,h2,h3{font-family:var(--sans);line-height:1.2;letter-spacing:-.01em}
-h1{font-size:clamp(2rem,6vw,3rem);font-weight:800;margin:.2rem 0 1rem}
-h2{font-size:1.35rem;font-weight:700;margin:2.6rem 0 .8rem}
-h3{font-size:1.05rem;font-weight:700;margin:1.6rem 0 .4rem}
-code,pre{font-family:var(--mono);font-size:.84rem}
-:not(pre)>code{background:var(--soft);padding:.05em .3em}
-pre{border:1.5px solid var(--ink);padding:1rem 1.1rem;overflow-x:auto;line-height:1.5;white-space:pre-wrap;word-break:break-word;margin:1.4rem 0}
-.btn{display:inline-block;font-family:var(--sans);font-weight:700;font-size:.95rem;text-decoration:none;border:2px solid var(--ink);padding:.7rem 1.15rem;margin:.3rem .5rem .3rem 0}
-.btn.solid{background:var(--ink);color:var(--paper)}
-.btn:hover{background:var(--ink);color:var(--paper)}
-.btn.solid:hover{background:var(--paper);color:var(--ink)}
-.note{border:1.5px solid var(--ink);padding:.9rem 1.1rem;font-family:var(--sans);font-size:.88rem;line-height:1.5}
-footer{border-top:1px solid var(--ink);margin-top:4rem}
-@media(max-width:480px){.top .wrap{font-size:.72rem}.top nav a{margin-left:.75rem}}
-footer .wrap{padding-top:1.4rem;padding-bottom:2.4rem;font-family:var(--mono);font-size:.75rem;color:var(--muted);line-height:1.7}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
+.top{
+  position:sticky;top:0;z-index:40;
+  backdrop-filter:blur(14px);
+  background:rgba(10,12,11,.82);
+  border-bottom:1px solid var(--line);
+}
+.top .wrap{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding:.85rem 1.25rem;font-family:var(--mono);font-size:.8rem;
+  max-width:68rem;
+}
+.brand{color:var(--ink);text-decoration:none;font-weight:600;letter-spacing:-.02em}
+.brand span{color:var(--accent)}
+.top nav{display:flex;flex-wrap:wrap;gap:.15rem .9rem}
+.top nav a{color:var(--muted);text-decoration:none}
+.top nav a:hover{color:var(--accent)}
+.label{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 .75rem;
+}
+h1,h2,h3{line-height:1.15;letter-spacing:-.03em;font-weight:750;margin:0}
+h1{font-size:clamp(2.2rem,5.5vw,3.2rem);margin:.15rem 0 1.1rem}
+h2{font-size:clamp(1.35rem,2.5vw,1.7rem);margin:2.4rem 0 .9rem}
+code,pre{font-family:var(--mono)}
+:not(pre)>code{
+  background:var(--bg-soft);color:var(--accent);
+  border:1px solid var(--line);padding:.08em .35em;border-radius:5px;font-size:.86em;
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--sans);font-weight:700;font-size:.95rem;text-decoration:none;
+  border:1px solid var(--line-strong);border-radius:999px;
+  padding:.72rem 1.15rem;margin:.25rem .55rem .25rem 0;
+  color:var(--ink);background:transparent;transition:background .15s,border-color .15s,color .15s,transform .15s;
+}
+.btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.btn.solid{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.solid:hover{background:#7bff9f;border-color:#7bff9f;color:var(--accent-ink)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.note{
+  margin:1.6rem 0 0;padding:1rem 1.15rem;
+  border:1px solid var(--line);border-radius:12px;
+  background:var(--bg-elev);font-size:.92rem;color:var(--muted);line-height:1.55;
+}
+.note strong{color:var(--ink)}
+.note em{color:var(--ink)}
+
+article{padding:1.2rem 0 0}
+article>p,article>ol{max-width:38rem}
+article p{margin:0 0 1.1rem;color:#d5ddd8}
+article .beat{
+  font-size:1.22rem;margin:1.35rem 0;color:var(--ink);letter-spacing:-.02em;
+}
+article .beat strong{color:var(--fail);font-family:var(--mono);font-size:1.35em}
+article ol{padding-left:1.25rem;color:#d5ddd8}
+article li{margin-bottom:.7rem}
+article li strong{color:var(--ink)}
+
+figure{
+  margin:1.8rem 0;padding:0;border-radius:14px;overflow:hidden;
+  border:1px solid var(--line);background:#070908;position:relative;
+}
+figure img{
+  width:100%;
+  filter:grayscale(1) contrast(1.05) brightness(.94);
+}
+figure::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(135deg, rgba(61,255,122,.16), transparent 42%);
+  mix-blend-mode:screen;
+}
+
+pre{
+  background:#070908;border:1px solid var(--line-strong);border-radius:14px;
+  padding:1.05rem 1.15rem;overflow-x:auto;line-height:1.55;
+  font-size:.84rem;color:#c5d0c9;margin:1.3rem 0;white-space:pre-wrap;word-break:break-word;
+  box-shadow:var(--shadow);
+}
+
+.end{
+  border-top:1px solid var(--line);margin:3rem 0 0;padding:1.6rem 0 0;
+}
+.end .box{
+  background:var(--bg-elev);border:1px solid var(--line);border-radius:16px;
+  padding:1.35rem 1.3rem 1.15rem;
+  background-image:linear-gradient(135deg, rgba(61,255,122,.08), transparent 45%);
+}
+.end p{color:var(--muted);margin:0 0 .9rem}
+.end .small{font-size:.88rem;margin-top:1rem}
+.end .small a{font-weight:600}
+
+footer{
+  border-top:1px solid var(--line);margin-top:3rem;
+  background:rgba(0,0,0,.25);
+}
+footer .wrap{
+  max-width:68rem;padding:1.5rem 1.25rem 2.4rem;font-family:var(--mono);
+  font-size:.75rem;color:var(--faint);line-height:1.75;
+}
 footer a{color:var(--muted)}
 
-article{padding-top:2.2rem}
-article>p,article>ol{max-width:38rem}
-article p{margin:0 0 1.05rem;hyphens:auto}
-article .beat{font-family:var(--sans);font-size:1.25rem;margin:1.4rem 0}
-article ol{padding-left:1.4rem}article li{margin-bottom:.6rem}
-figure{margin:1.8rem 0}
-.note{margin:1.6rem 0 0}
-.end{border-top:2px solid var(--ink);margin-top:3rem;padding-top:1.4rem}
-.end .small{font-family:var(--sans);font-size:.88rem}
+@media(prefers-reduced-motion:reduce){
+  .btn:hover{transform:none}
+}
+@media(max-width:420px){
+  .top .wrap{font-size:.72rem;padding:.75rem 1rem}
+  .top nav{gap:.15rem .65rem}
+  .btn{width:100%;margin-right:0}
+}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><a class="brand" href="./">trust-issues-toolkit</a><nav><a href="./#templates">Templates</a><a href="https://github.com/ayaan278/trust-issues-toolkit">GitHub</a></nav></div></header>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./">trust-issues<span>-toolkit</span></a>
+  <nav>
+    <a href="./#templates">Templates</a>
+    <a href="https://github.com/ayaan278/trust-issues-toolkit">GitHub</a>
+  </nav>
+</div></header>
+
 <main class="wrap">
 <p class="note"><strong>Free sample.</strong> Chapter 2 of <em>Trust Issues: Working With Code You Didn’t Write</em> by Ayaan Ahmad. © 2026 Ayaan Ahmad. All rights reserved. Not covered by the toolkit’s MIT licence.</p>
 <article>
@@ -83,7 +205,12 @@ figure{margin:1.8rem 0}
 <p>Loop engineering is different: instead of sitting there re-running the thing by hand until it works, you put an agent in charge of <em>making</em> it work — running a series of steps, checking the result, adjusting, and repeating — so you don’t have to sit there babysitting the terminal.</p>
 <p>Your job moves upstream. You don’t write the fix; <strong>you define what success looks like</strong>, hand over the tools to check for it, and tell the agent to iterate until success is met. Until the agent sees that 200, it keeps looping — trying different things, reading the actual errors, narrowing down. Exactly what I did across two miserable days, except it doesn’t get tired, doesn’t forget what it tried in attempt #12, and doesn’t edit past the working version without noticing.</p>
 <p>Every real loop has four parts:</p>
-<ol><li><strong>An exit condition</strong> — a machine-checkable definition of “done.” A 200 response. A passing test suite. A script that exits 0. Not “looks good to me” — the agent can’t see vibes.</li><li><strong>A feedback signal</strong> — the loop is only as smart as the errors it can read. Actual response bodies, stack traces, test output. Garbage feedback in, hallucinated fixes out.</li><li><strong>Permission to act</strong> — the agent needs to be able to edit code, run the command, and see the result. A loop it can’t close is just a prompt with extra steps.</li><li><strong>A budget</strong> — max attempts or a rough time limit, so a truly stuck loop escalates back to you instead of burning tokens until the heat death of the universe.</li></ol>
+<ol>
+<li><strong>An exit condition</strong> — a machine-checkable definition of “done.” A 200 response. A passing test suite. A script that exits 0. Not “looks good to me” — the agent can’t see vibes.</li>
+<li><strong>A feedback signal</strong> — the loop is only as smart as the errors it can read. Actual response bodies, stack traces, test output. Garbage feedback in, hallucinated fixes out.</li>
+<li><strong>Permission to act</strong> — the agent needs to be able to edit code, run the command, and see the result. A loop it can’t close is just a prompt with extra steps.</li>
+<li><strong>A budget</strong> — max attempts or a rough time limit, so a truly stuck loop escalates back to you instead of burning tokens until the heat death of the universe.</li>
+</ol>
 <p>If you remember one sentence from this chapter: <strong>a prompt asks for code; a loop asks for an outcome.</strong></p>
 <h2>A typical loop</h2>
 <p>Here’s the shape of a loop I’d hand to an agent today for exactly my 67/68 situation:</p>
@@ -109,13 +236,17 @@ STOP WHEN: script prints 200, or after 25 attempts — then summarize the log an
 <p>Four lines, zero mystery. The answer to “which one worked?” is right there — permanently, boringly, in writing. That log is the entire difference between my two lost days and a coffee break.</p>
 <p>Two days of my life, expressed as fifteen lines of instructions. That’s loop engineering.</p>
 </article>
+
 <aside class="end">
-<p class="label">End of the free excerpt</p>
-<p>The chapter continues with “Why this is a trust technology” — and the rest of the book picks up from there: rules, skills, MCP, and where not to trust the agent at all.</p>
-<p><a class="btn solid" href="https://www.amazon.com/dp/B0HD7D3DQ9">Kindle</a><a class="btn" href="https://www.amazon.com/dp/B0HL5DK2K6">Paperback</a></p>
-<p class="small">The loop above is free in the toolkit: <a href="https://github.com/ayaan278/trust-issues-toolkit/blob/main/prompts/loop-template.md"><code>prompts/loop-template.md</code></a> · <a href="./">Back to the toolkit</a></p>
+  <div class="box">
+    <p class="label">End of the free excerpt</p>
+    <p>The chapter continues with “Why this is a trust technology” — and the rest of the book picks up from there: rules, skills, MCP, and where not to trust the agent at all.</p>
+    <p><a class="btn solid" href="https://www.amazon.com/dp/B0HD7D3DQ9">Kindle</a><a class="btn" href="https://www.amazon.com/dp/B0HL5DK2K6">Paperback</a></p>
+    <p class="small">The loop above is free in the toolkit: <a href="https://github.com/ayaan278/trust-issues-toolkit/blob/main/prompts/loop-template.md"><code>prompts/loop-template.md</code></a> · <a href="./">Back to the toolkit</a></p>
+  </div>
 </aside>
 </main>
+
 <footer><div class="wrap">© 2026 Ayaan Ahmad. Chapter text and images: all rights reserved. Toolkit templates: MIT. No cookies, no trackers.</div></footer>
 </body>
 </html>
