@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 67/68 Problem — free chapter · Trust Issues</title>
+<meta name="description" content="Free sample chapter from Trust Issues: Working With Code You Didn’t Write. Two days lost to one successful request out of 68 — and the loop that makes that misery optional.">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23fff' text-anchor='middle'%3ETI%3C/text%3E%3C/svg%3E">
+<style>
+:root{--ink:#000;--paper:#fff;--muted:#4a4a4a;--soft:#f3f3f3;
+--sans:"DejaVu Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+--serif:"DejaVu Serif",Georgia,"Times New Roman",serif;
+--mono:"DejaVu Sans Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.0625rem;line-height:1.65}
+a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1.25rem}
+.top{border-bottom:1px solid var(--ink)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:.9rem;padding-bottom:.9rem;font-family:var(--mono);font-size:.8rem}
+.top a{text-decoration:none;white-space:nowrap}
+.top nav a{margin-left:1.1rem}
+.top nav a:hover,.top .brand:hover{text-decoration:underline}
+.label{font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin:0 0 .6rem}
+h1,h2,h3{font-family:var(--sans);line-height:1.2;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,6vw,3rem);font-weight:800;margin:.2rem 0 1rem}
+h2{font-size:1.35rem;font-weight:700;margin:2.6rem 0 .8rem}
+h3{font-size:1.05rem;font-weight:700;margin:1.6rem 0 .4rem}
+code,pre{font-family:var(--mono);font-size:.84rem}
+:not(pre)>code{background:var(--soft);padding:.05em .3em}
+pre{border:1.5px solid var(--ink);padding:1rem 1.1rem;overflow-x:auto;line-height:1.5;white-space:pre-wrap;word-break:break-word;margin:1.4rem 0}
+.btn{display:inline-block;font-family:var(--sans);font-weight:700;font-size:.95rem;text-decoration:none;border:2px solid var(--ink);padding:.7rem 1.15rem;margin:.3rem .5rem .3rem 0}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--paper);color:var(--ink)}
+.note{border:1.5px solid var(--ink);padding:.9rem 1.1rem;font-family:var(--sans);font-size:.88rem;line-height:1.5}
+footer{border-top:1px solid var(--ink);margin-top:4rem}
+@media(max-width:480px){.top .wrap{font-size:.72rem}.top nav a{margin-left:.75rem}}
+footer .wrap{padding-top:1.4rem;padding-bottom:2.4rem;font-family:var(--mono);font-size:.75rem;color:var(--muted);line-height:1.7}
+footer a{color:var(--muted)}
+
+article{padding-top:2.2rem}
+article>p,article>ol{max-width:38rem}
+article p{margin:0 0 1.05rem;hyphens:auto}
+article .beat{font-family:var(--sans);font-size:1.25rem;margin:1.4rem 0}
+article ol{padding-left:1.4rem}article li{margin-bottom:.6rem}
+figure{margin:1.8rem 0}
+.note{margin:1.6rem 0 0}
+.end{border-top:2px solid var(--ink);margin-top:3rem;padding-top:1.4rem}
+.end .small{font-family:var(--sans);font-size:.88rem}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="./">trust-issues-toolkit</a><nav><a href="./#templates">Templates</a><a href="https://github.com/ayaan278/trust-issues-toolkit">GitHub</a></nav></div></header>
+<main class="wrap">
+<p class="note"><strong>Free sample.</strong> Chapter 2 of <em>Trust Issues: Working With Code You Didn’t Write</em> by Ayaan Ahmad. © 2026 Ayaan Ahmad. All rights reserved. Not covered by the toolkit’s MIT licence.</p>
+<article>
+<figure><img src="img/ch2-opener.jpg" alt="Pencil illustration: the author at a desk covered in sticky notes, untangling a knotted string with a small bug character." loading="lazy" width="900" height="830"></figure>
+<p class="label">Chapter 2</p>
+<h1>The 67/68 Problem</h1>
+<p>I told you how much I loved coding. Now let me tell you about the two days it made me question that love.</p>
+<p>Two or three years ago, I was integrating with an API that shall remain nameless — partly to protect the guilty, partly because you’ve definitely met one just like it. This API had a communication style best described as <em>minimalist</em>. No error messages. No logs worth reading. Just HTTP status codes, and a dashboard that showed exactly one useful metric: failed requests over total requests.</p>
+<p>It started at 1/1. Then 2/2. Then 13/13. Then 32/32. A perfect record — of failure. I was deep in debugging mode, changing things, re-sending, changing more things. The next time I looked at the dashboard, it read:</p>
+<p class="beat"><strong>67/68.</strong></p>
+<p>One request had worked.</p>
+<p class="beat"><em>Which one?</em></p>
+<p>I froze. Somewhere in the last hour of frantic edits, one combination of my changes had produced a success — and I had kept editing right past it. Does Ctrl+Z work on your entire project? Asking for a friend. (I guess that’s what git is for. The 2023 version of me was about to learn that lesson at full price.)</p>
+<p>It took me <strong>two days</strong> to trace back which change had produced that single 200. Two days of manually reconstructing my own chaos, one edit at a time.</p>
+<p>There’s a special kind of pain in <em>almost</em>. A clean 0/68 I could have made peace with — total failure is at least honest; you sigh, you rethink your approach, you move on. But 67/68 is the universe personally taunting you. Success wasn’t theoretical anymore. It had <em>happened</em> — on my machine, with my code, sometime in the last hour — and now it was hiding somewhere in my own edit history, fully aware of what it was doing to me. I remember physically leaning closer to the screen, as if the dashboard might whisper which request it was if I just looked sincere enough.</p>
+<p>The cruelest part: I couldn’t even celebrate. Every engineer knows the rule — one success you can’t reproduce isn’t a success, it’s a fluke wearing a suit. Until I could make that 200 happen on purpose, it was worth exactly nothing. So close to done, and contractually obligated to pretend I wasn’t.</p>
+<p>Here’s the uncomfortable truth about that story: nothing about the debugging required creativity. It required <em>repetition with memory</em> — try a variation, observe the result, record it, narrow down. I was a slow, tired, increasingly bitter for-loop with a caffeine dependency.</p>
+<p>That is exactly the class of misery that’s now optional.</p>
+<figure><img src="img/ch2-67-68.jpg" alt="A dark desk at night. The monitor reads: FAILED 67 / 68." loading="lazy" width="1100" height="619"></figure>
+<h2>Don’t chase the euphoria</h2>
+<p>When that request finally worked, the dopamine hit was unreal. I get it — that rush is why half of us are in this industry.</p>
+<p>But as much as I loved that feeling, I won’t recommend you chase it. That euphoria is the reward for surviving a process that shouldn’t have required survival. If you’ve been around the industry, you know “prompt engineering” became a thing — a skill, a job title, a thousand LinkedIn posts. There’s something newer now, and I hope it stays relevant for a while because it’s genuinely cool: <strong>loop engineering.</strong></p>
+<h2>What a loop actually is</h2>
+<p>Prompt engineering is asking the machine really nicely, once, and hoping.</p>
+<p>Loop engineering is different: instead of sitting there re-running the thing by hand until it works, you put an agent in charge of <em>making</em> it work — running a series of steps, checking the result, adjusting, and repeating — so you don’t have to sit there babysitting the terminal.</p>
+<p>Your job moves upstream. You don’t write the fix; <strong>you define what success looks like</strong>, hand over the tools to check for it, and tell the agent to iterate until success is met. Until the agent sees that 200, it keeps looping — trying different things, reading the actual errors, narrowing down. Exactly what I did across two miserable days, except it doesn’t get tired, doesn’t forget what it tried in attempt #12, and doesn’t edit past the working version without noticing.</p>
+<p>Every real loop has four parts:</p>
+<ol><li><strong>An exit condition</strong> — a machine-checkable definition of “done.” A 200 response. A passing test suite. A script that exits 0. Not “looks good to me” — the agent can’t see vibes.</li><li><strong>A feedback signal</strong> — the loop is only as smart as the errors it can read. Actual response bodies, stack traces, test output. Garbage feedback in, hallucinated fixes out.</li><li><strong>Permission to act</strong> — the agent needs to be able to edit code, run the command, and see the result. A loop it can’t close is just a prompt with extra steps.</li><li><strong>A budget</strong> — max attempts or a rough time limit, so a truly stuck loop escalates back to you instead of burning tokens until the heat death of the universe.</li></ol>
+<p>If you remember one sentence from this chapter: <strong>a prompt asks for code; a loop asks for an outcome.</strong></p>
+<h2>A typical loop</h2>
+<p>Here’s the shape of a loop I’d hand to an agent today for exactly my 67/68 situation:</p>
+<pre><code>GOAL: POST /v1/transactions on [nameless API] must return 200.
+
+VERIFY WITH: ./scripts/test_api_call.sh
+  (sends one request, prints status code + full response body)
+
+RULES:
+- After every change, run the verify script and read the FULL response
+- Change ONE thing per attempt (auth header, payload field, encoding, endpoint version)
+- Keep a running log in attempts.md: what changed, what came back
+- Commit after every attempt with a one-line message
+- Do NOT touch anything outside the api_client module
+
+STOP WHEN: script prints 200, or after 25 attempts — then summarize the log and hand back to me.</code></pre>
+<p>Look at what each line is really doing. The verify script is the exit condition — the agent can’t lie to me about a status code it has to print. The one-change-per-attempt rule plus <code>attempts.md</code> is the memory I didn’t have at 2 AM. The commit-every-attempt rule means “which one worked?” is never again a two-day question — it’s <code>git log</code>. The boundary rule keeps an enthusiastic agent from “fixing” my database configuration while it’s in there.</p>
+<p>Come back an hour later and the attempts log reads like a lab notebook you never had to keep:</p>
+<pre><code>#11  auth header: Bearer -&gt; Token          -&gt; 401
+#12  payload: amount as string             -&gt; 422
+#13  endpoint: /v2/ -&gt; /v1/                -&gt; 404
+#14  content-type: added charset=utf-8     -&gt; 200 OK</code></pre>
+<p>Four lines, zero mystery. The answer to “which one worked?” is right there — permanently, boringly, in writing. That log is the entire difference between my two lost days and a coffee break.</p>
+<p>Two days of my life, expressed as fifteen lines of instructions. That’s loop engineering.</p>
+</article>
+<aside class="end">
+<p class="label">End of the free excerpt</p>
+<p>The chapter continues with “Why this is a trust technology” — and the rest of the book picks up from there: rules, skills, MCP, and where not to trust the agent at all.</p>
+<p><a class="btn solid" href="https://www.amazon.com/dp/B0HD7D3DQ9">Kindle</a><a class="btn" href="https://www.amazon.com/dp/B0HL5DK2K6">Paperback</a></p>
+<p class="small">The loop above is free in the toolkit: <a href="https://github.com/ayaan278/trust-issues-toolkit/blob/main/prompts/loop-template.md"><code>prompts/loop-template.md</code></a> · <a href="./">Back to the toolkit</a></p>
+</aside>
+</main>
+<footer><div class="wrap">© 2026 Ayaan Ahmad. Chapter text and images: all rights reserved. Toolkit templates: MIT. No cookies, no trackers.</div></footer>
+</body>
+</html>
