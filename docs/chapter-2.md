@@ -55,44 +55,9 @@ Every real loop has four parts:
 
 If you remember one sentence from this chapter: **a prompt asks for code; a loop asks for an outcome.**
 
-## A typical loop
-
-Here’s the shape of a loop I’d hand to an agent today for exactly my 67/68 situation:
-
-```text
-GOAL: POST /v1/transactions on [nameless API] must return 200.
-
-VERIFY WITH: ./scripts/test_api_call.sh
-  (sends one request, prints status code + full response body)
-
-RULES:
-- After every change, run the verify script and read the FULL response
-- Change ONE thing per attempt (auth header, payload field, encoding, endpoint version)
-- Keep a running log in attempts.md: what changed, what came back
-- Commit after every attempt with a one-line message
-- Do NOT touch anything outside the api_client module
-
-STOP WHEN: script prints 200, or after 25 attempts — then summarize the log and hand back to me.
-```
-
-Look at what each line is really doing. The verify script is the exit condition — the agent can’t lie to me about a status code it has to print. The one-change-per-attempt rule plus `attempts.md` is the memory I didn’t have at 2 AM. The commit-every-attempt rule means “which one worked?” is never again a two-day question — it’s `git log`. The boundary rule keeps an enthusiastic agent from “fixing” my database configuration while it’s in there.
-
-Come back an hour later and the attempts log reads like a lab notebook you never had to keep:
-
-```text
-#11  auth header: Bearer -> Token          -> 401
-#12  payload: amount as string             -> 422
-#13  endpoint: /v2/ -> /v1/                -> 404
-#14  content-type: added charset=utf-8     -> 200 OK
-```
-
-Four lines, zero mystery. The answer to “which one worked?” is right there — permanently, boringly, in writing. That log is the entire difference between my two lost days and a coffee break.
-
-Two days of my life, expressed as fifteen lines of instructions. That’s loop engineering.
-
 ---
 
-*End of the free excerpt.* The chapter continues with “Why this is a trust technology” — and the rest of the book picks up from there: rules, skills, MCP, and where not to trust the agent at all.
+*End of the free excerpt.* The chapter continues with “A typical loop” — and the rest of the book picks up from there: rules, skills, MCP, and where not to trust the agent at all.
 
-- The loop above is in the toolkit: [`prompts/loop-template.md`](../prompts/loop-template.md)
+- The loop template is in the toolkit: [`prompts/loop-template.md`](../prompts/loop-template.md)
 - The book: [Kindle](https://www.amazon.com/dp/B0HD7D3DQ9) · [Paperback](https://www.amazon.com/dp/B0HL5DK2K6)
