@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trust Issues Toolkit — rules, loops and review skills for AI coding agents</title>
+<meta name="description" content="Free, copy-paste templates for working with code you didn’t write: three rules files, loop and pipeline templates, a skill template and a review skill. MIT licensed.">
+<meta name="referrer" content="no-referrer">
+<meta property="og:title" content="Trust Issues Toolkit">
+<meta property="og:description" content="Don’t trust the code. Trust the verification. Free rules files, loop templates and a review skill for AI coding agents.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%23fff' text-anchor='middle'%3ETI%3C/text%3E%3C/svg%3E">
+<style>
+:root{--ink:#000;--paper:#fff;--muted:#4a4a4a;--soft:#f3f3f3;
+--sans:"DejaVu Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+--serif:"DejaVu Serif",Georgia,"Times New Roman",serif;
+--mono:"DejaVu Sans Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.0625rem;line-height:1.65}
+a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1.25rem}
+.top{border-bottom:1px solid var(--ink)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:.9rem;padding-bottom:.9rem;font-family:var(--mono);font-size:.8rem}
+.top a{text-decoration:none;white-space:nowrap}
+.top nav a{margin-left:1.1rem}
+.top nav a:hover,.top .brand:hover{text-decoration:underline}
+.label{font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin:0 0 .6rem}
+h1,h2,h3{font-family:var(--sans);line-height:1.2;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,6vw,3rem);font-weight:800;margin:.2rem 0 1rem}
+h2{font-size:1.35rem;font-weight:700;margin:2.6rem 0 .8rem}
+h3{font-size:1.05rem;font-weight:700;margin:1.6rem 0 .4rem}
+code,pre{font-family:var(--mono);font-size:.84rem}
+:not(pre)>code{background:var(--soft);padding:.05em .3em}
+pre{border:1.5px solid var(--ink);padding:1rem 1.1rem;overflow-x:auto;line-height:1.5;white-space:pre-wrap;word-break:break-word;margin:1.4rem 0}
+.btn{display:inline-block;font-family:var(--sans);font-weight:700;font-size:.95rem;text-decoration:none;border:2px solid var(--ink);padding:.7rem 1.15rem;margin:.3rem .5rem .3rem 0}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--paper);color:var(--ink)}
+.note{border:1.5px solid var(--ink);padding:.9rem 1.1rem;font-family:var(--sans);font-size:.88rem;line-height:1.5}
+footer{border-top:1px solid var(--ink);margin-top:4rem}
+@media(max-width:480px){.top .wrap{font-size:.72rem}.top nav a{margin-left:.75rem}}
+footer .wrap{padding-top:1.4rem;padding-bottom:2.4rem;font-family:var(--mono);font-size:.75rem;color:var(--muted);line-height:1.7}
+footer a{color:var(--muted)}
+
+.hero{padding:3.6rem 0 2.4rem}
+.hero .kicker{font-family:var(--mono);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;margin:0 0 1.1rem}
+.hero h1{max-width:14em}
+.hero .lede{font-size:1.2rem;max-width:34rem;margin:0 0 1.6rem}
+section{padding:1.2rem 0}
+.rule{border:0;border-top:1px solid var(--ink);margin:2.2rem 0 0}
+.get{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:1rem}
+@media(min-width:720px){.get{grid-template-columns:repeat(3,1fr)}}
+.get li{border:1.5px solid var(--ink);padding:1rem 1.1rem;font-family:var(--sans);font-size:.95rem;line-height:1.5}
+.get b{display:block;font-size:1.05rem;margin-bottom:.35rem}
+.get .n{font-family:var(--mono);font-size:.75rem;display:block;margin-bottom:.5rem}
+.tpl{list-style:none;padding:0;margin:1rem 0 0;border-top:1px solid var(--ink)}
+.tpl a{display:grid;grid-template-columns:3.2rem 1fr;gap:.1rem .8rem;padding:.8rem 0;border-bottom:1px solid var(--ink);text-decoration:none;font-family:var(--sans)}
+.tpl a:hover .nm{text-decoration:underline}
+.tpl .id{font-family:var(--mono);font-size:.8rem;padding-top:.15rem;grid-row:span 2}
+.tpl .nm{font-weight:700}
+.tpl .ds{font-size:.9rem;color:var(--muted)}
+@media(min-width:720px){.tpl a{grid-template-columns:3.2rem 11rem 1fr}.tpl .id{grid-row:auto}}
+.warn{font-family:var(--sans);border-left:4px solid var(--ink);padding:.2rem 0 .2rem 1rem;margin:1.6rem 0;font-size:1rem}
+.ch{display:grid;gap:1.4rem;align-items:center}
+@media(min-width:720px){.ch{grid-template-columns:1.05fr 1fr}}
+.ch .beat{font-family:var(--sans);font-size:1.15rem;margin:.2rem 0}
+.ch .big{font-family:var(--mono);font-size:2.2rem;font-weight:700;margin:.4rem 0}
+.ch img{border:1.5px solid var(--ink)}
+.about{font-family:var(--sans);font-size:.98rem}
+.book{border:2px solid var(--ink);padding:1.3rem 1.3rem 1rem;margin-top:1rem}
+.book .t{font-family:var(--sans);font-weight:800;letter-spacing:.06em;font-size:1.3rem;margin:0}
+.book .s{font-family:var(--mono);font-size:.8rem;margin:.2rem 0 .9rem}
+.book p{font-size:.98rem}
+.small{font-family:var(--sans);font-size:.85rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="./">trust-issues-toolkit</a><nav><a href="#templates">Templates</a><a href="chapter-2.html">Chapter 2</a><a href="https://github.com/ayaan278/trust-issues-toolkit">GitHub</a></nav></div></header>
+<main class="wrap">
+
+<section class="hero">
+<p class="kicker">Free toolkit · MIT</p>
+<h1>Don’t trust the code. Trust the verification.</h1>
+<p class="lede">Rules files, loop templates and a review skill for working with AI coding agents. Copy them. Fill in the brackets. Delete what doesn’t apply.</p>
+<a class="btn solid" href="https://github.com/ayaan278/trust-issues-toolkit">Get the templates</a><a class="btn" href="chapter-2.html">Read Chapter 2 free</a>
+</section>
+
+<section aria-labelledby="get">
+<h2 id="get">What you get</h2>
+<ul class="get">
+<li><span class="n">01 · rules/</span><b>A handbook before the hire</b>Three small rules files — project, code, test. Your agent reads them before it writes a line.</li>
+<li><span class="n">02 · prompts/</span><b>Outcomes, not prompts</b>Loop and pipeline templates with an exit condition, a feedback signal, boundaries and a budget.</li>
+<li><span class="n">03 · skills/</span><b>Review before you review</b>A skill template and a branch-review skill that catch the cheap mistakes so you only judge the expensive ones.</li>
+</ul>
+</section>
+
+<section id="templates" aria-labelledby="tpl">
+<h2 id="tpl">The templates</h2>
+<ul class="tpl">
+<li><a href="https://github.com/ayaan278/trust-issues-toolkit/blob/main/rules/project-rules.md"><span class="id">A.1</span><span class="nm">Project rules</span><span class="ds">What this codebase is: stack, layout, where things live, what not to touch.</span></a></li>
+<li><a href="https://github.com/ayaan278/trust-issues-toolkit/blob/main/rules/code-rules.md"><span class="id">A.2</span><span class="nm">Code rules</span><span class="ds">How you write here. Where “tutorial code” goes to die.</span></a></li>
+<li><a href="https://github.com/ayaan278/trust-issues-toolkit/blob/main/rules/test-rules.md"><span class="id">A.3</span><span class="nm">Test rules</span><span class="ds">What “verified” means. If you copy one file, make it this one.</span></a></li>
+<li><a href="https://github.com/ayaan278/trust-issues-toolkit/blob/main/prompts/loop-template.md"><span class="id">A.4</span><span class="nm">Loop template</span><span class="ds">Hand the agent an outcome: exit condition, feedback, boundaries, budget.</span></a></li>
+<li><a href="https://github.com/ayaan278/trust-issues-toolkit/blob/main/skills/skill-template/SKILL.md"><span class="id">A.5</span><span class="nm">Skill template</span><span class="ds">Turn a correction you keep repeating into an on-demand playbook.</span></a></li>
+<li><a href="https://github.com/ayaan278/trust-issues-toolkit/blob/main/skills/branch-review/SKILL.md"><span class="id">A.6</span><span class="nm">Review skill</span><span class="ds">Reviews the diff against main before you do. Catches the cheap mistakes.</span></a></li>
+<li><a href="https://github.com/ayaan278/trust-issues-toolkit/blob/main/prompts/pipeline-template.md"><span class="id">A.7</span><span class="nm">Pipeline template</span><span class="ds">Ticket → tests → review → draft PR → CI watch. Build it last.</span></a></li>
+</ul>
+<p class="warn">These files shape behaviour. They do not bound it. Permissions do that — read-only access, branch protection, a human running migrations, deploy staying a human verb.</p>
+<h3>The loop, in full</h3>
+<pre><code>GOAL: [one sentence, stated as an outcome — not a task]
+
+VERIFY WITH: [exact command that proves it]
+  (must print something unambiguous — a status code, a pass/fail, an exit code)
+
+RULES:
+- After every change, run the verify command and read the FULL output
+- Change ONE thing per attempt
+- Keep a running log in attempts.md: what changed, what came back
+- Commit after every attempt with a one-line message
+- Do NOT touch anything outside [module/directory]
+
+STOP WHEN: [verify command succeeds], or after [N] attempts — then summarise the log and hand back to me.</code></pre>
+<p class="small">Anything still in <code>[brackets]</code> is a lie your agent will confidently act on.</p>
+</section>
+
+<hr class="rule">
+<section id="chapter-2" aria-labelledby="ch2">
+<p class="label" style="margin-top:1.6rem">Free chapter · Chapter 2</p>
+<h2 id="ch2" style="margin-top:0">The 67/68 Problem</h2>
+<div class="ch">
+<div>
+<p class="beat">It started at 1/1. Then 2/2. Then 13/13. Then 32/32.</p>
+<p class="big">67/68.</p>
+<p class="beat">One request had worked. <em>Which one?</em></p>
+<p>Two days to find out. Then the fix: a loop an agent runs while you make tea. The story behind the loop template, free to read.</p>
+<a class="btn solid" href="chapter-2.html">Read the excerpt</a>
+</div>
+<a href="chapter-2.html" aria-label="Read Chapter 2"><img src="img/ch2-67-68.jpg" alt="A dark desk at night. The monitor reads: FAILED 67 / 68." width="1100" height="619" loading="lazy"></a>
+</div>
+</section>
+
+<hr class="rule">
+<section aria-labelledby="who">
+<h2 id="who">Who made this</h2>
+<p class="about">Ayaan Ahmad — backend and AI engineer in Dubai, UAE, building production AI applications on Django and Next.js. <a href="https://github.com/ayaan278">GitHub</a> · <a href="https://www.linkedin.com/in/ayaan278">LinkedIn</a></p>
+<div class="book">
+<p class="t">TRUST ISSUES</p>
+<p class="s">working with code you didn’t write</p>
+<p>These templates are the appendix of the book. The stories behind each file — and why the rules are in that order — are in there.</p>
+<a class="btn solid" href="https://www.amazon.com/dp/B0HD7D3DQ9">Kindle</a><a class="btn" href="https://www.amazon.com/dp/B0HL5DK2K6">Paperback</a>
+<p class="small">Paperback ISBN 9798173808592</p>
+</div>
+</section>
+
+</main>
+<footer><div class="wrap">Templates: MIT licence. Chapter 2 excerpt and images: © 2026 Ayaan Ahmad, all rights reserved.<br>No cookies, no analytics, no trackers. <a href="https://github.com/ayaan278/trust-issues-toolkit">Source on GitHub</a></div></footer>
+</body>
+</html>
